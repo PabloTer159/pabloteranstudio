@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pablo Terán — Video Production · Motion Graphics · Brand Identity</title>
+<meta name="description" content="Audiovisual Producer and Multimedia Designer based in Ecuador. Video production, motion graphics, and brand identity for international clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:    #0D0D0D;
+  --dark1:    #141414;
+  --dark2:    #1E1E1E;
+  --dark3:    #2A2A2A;
+  --green:    #7FFF00;
+  --green-dk: #3A6600;
+  --white:    #F0F0F0;
+  --gray:     #777777;
+  --gray-lt:  #AAAAAA;
+
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --max: 1100px;
+  --pad: clamp(24px, 6vw, 80px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── UTILS ─── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.mono { font-family: var(--font-mono); }
+.green { color: var(--green); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px var(--pad);
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--dark3);
+  transition: border-color 0.3s;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+
+.nav-frame {
+  width: 28px; height: 28px;
+  position: relative;
+  flex-shrink: 0;
+}
+.nav-frame::before,
+.nav-frame::after { content:''; position:absolute; border-color:var(--green); border-style:solid; }
+.nav-frame::before { top:0; left:0; width:9px; height:9px; border-width:2px 0 0 2px; }
+.nav-frame::after  { bottom:0; right:0; width:9px; height:9px; border-width:0 2px 2px 0; }
+.nav-frame .tr { position:absolute; top:0; right:0; width:9px; height:9px; border-top:2px solid var(--green); border-right:2px solid var(--green); }
+.nav-frame .bl { position:absolute; bottom:0; left:0; width:9px; height:9px; border-bottom:2px solid var(--green); border-left:2px solid var(--green); }
+.nav-frame .dot { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:4px; height:4px; background:var(--green); border-radius:50%; }
+
+.nav-name {
+  font-size: 14px; font-weight: 700; letter-spacing: 3px;
+  color: var(--white); text-transform: uppercase;
+}
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 500; letter-spacing: 1.5px;
+  color: var(--gray); text-decoration: none; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green); }
+
+.nav-cta {
+  background: var(--green); color: var(--black);
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  padding: 10px 18px; text-decoration: none; text-transform: uppercase;
+  border: none; cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: var(--font-body);
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px var(--pad) 80px;
+  position: relative; overflow: hidden;
+}
+
+/* Subtle scan-line texture */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(127,255,0,0.008) 3px, rgba(127,255,0,0.008) 4px);
+  pointer-events: none;
+}
+
+/* Large frame watermark behind hero text */
+.hero-watermark {
+  position: absolute;
+  right: -40px; top: 50%; transform: translateY(-50%);
+  width: min(560px, 55vw); height: min(560px, 55vw);
+  opacity: 0.04;
+  pointer-events: none;
+}
+.hero-watermark::before,
+.hero-watermark::after { content:''; position:absolute; border-color:var(--green); border-style:solid; }
+.hero-watermark::before { top:0; left:0; width:35%; height:35%; border-width:3px 0 0 3px; }
+.hero-watermark::after  { bottom:0; right:0; width:35%; height:35%; border-width:0 3px 3px 0; }
+.wm-tr { position:absolute; top:0; right:0; width:35%; height:35%; border-top:3px solid var(--green); border-right:3px solid var(--green); }
+.wm-bl { position:absolute; bottom:0; left:0; width:35%; height:35%; border-bottom:3px solid var(--green); border-left:3px solid var(--green); }
+.wm-ch { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:12%; height:2px; background:var(--green); }
+.wm-cv { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2px; height:12%; background:var(--green); }
+.wm-dot { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2%; height:2%; background:var(--green); border-radius:50%; }
+
+.hero-inner { position: relative; z-index: 1; max-width: 680px; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 3px;
+  color: var(--green); text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 32px; height: 1px; background: var(--green);
+}
+
+.hero-headline {
+  font-size: clamp(42px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.hero-headline em {
+  font-style: normal;
+  color: var(--green);
+  display: block;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--gray-lt);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 44px;
+}
+
+.hero-actions {
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+}
+
+.btn-primary {
+  background: var(--green); color: var(--black);
+  font-size: 13px; font-weight: 800; letter-spacing: 2px;
+  padding: 16px 32px; text-decoration: none; text-transform: uppercase;
+  display: inline-block;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent; color: var(--white);
+  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  padding: 15px 32px; text-decoration: none; text-transform: uppercase;
+  border: 1px solid var(--dark3); display: inline-block;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--green); color: var(--green); }
+
+.hero-stats {
+  display: flex; gap: 40px; margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--dark3);
+}
+
+.stat-num {
+  font-size: 36px; font-weight: 800; color: var(--green);
+  line-height: 1; margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 11px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+/* ─── SECTION BASE ─── */
+section {
+  padding: clamp(64px, 10vw, 120px) var(--pad);
+  border-top: 1px solid var(--dark3);
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 3px;
+  color: var(--green); text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800; color: var(--white);
+  line-height: 1.1; letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 16px; color: var(--gray-lt);
+  max-width: 520px; line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* ─── SERVICES ─── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+}
+
+.service-card {
+  background: var(--dark1);
+  padding: 44px 40px;
+  border: 1px solid var(--dark3);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--green);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover { border-color: var(--dark3); }
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon {
+  width: 48px; height: 48px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+/* Video icon */
+.icon-video::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent var(--green);
+}
+.icon-video-ring {
+  position: absolute; inset: 0;
+  border: 2px solid var(--dark3); border-radius: 50%;
+}
+
+/* Frame icon */
+.icon-frame {
+  position: relative;
+}
+.icon-frame::before,
+.icon-frame::after { content:''; position:absolute; border-color:var(--green); border-style:solid; }
+.icon-frame::before { top:0;left:0; width:14px;height:14px; border-width:2px 0 0 2px; }
+.icon-frame::after  { bottom:0;right:0; width:14px;height:14px; border-width:0 2px 2px 0; }
+.icon-frame .if-tr { position:absolute;top:0;right:0;width:14px;height:14px;border-top:2px solid var(--green);border-right:2px solid var(--green); }
+.icon-frame .if-bl { position:absolute;bottom:0;left:0;width:14px;height:14px;border-bottom:2px solid var(--green);border-left:2px solid var(--green); }
+.icon-frame .if-dot { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;background:var(--green);border-radius:50%; }
+
+/* Identity icon */
+.icon-identity {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 22px; font-weight: 700;
+  color: var(--green); letter-spacing: -2px;
+}
+
+.service-name {
+  font-size: 20px; font-weight: 700; color: var(--white);
+  margin-bottom: 12px; letter-spacing: 0.3px;
+}
+
+.service-desc {
+  font-size: 14px; color: var(--gray-lt);
+  line-height: 1.7; margin-bottom: 28px;
+}
+
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 600; letter-spacing: 1px;
+  color: var(--green); border: 1px solid var(--dark3);
+  padding: 4px 10px; text-transform: uppercase;
+}
+
+/* ─── PROCESS ─── */
+.process-steps {
+  display: grid; gap: 0;
+  counter-reset: step;
+  max-width: 800px;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0;
+  position: relative;
+}
+
+.process-step::before {
+  content: '';
+  position: absolute; left: 32px; top: 64px; bottom: 0;
+  width: 1px; background: var(--dark3);
+}
+.process-step:last-child::before { display: none; }
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--green);
+  font-weight: 600; letter-spacing: 1px;
+  padding: 40px 0 0 0;
+  position: relative; z-index: 1;
+}
+
+.step-dot {
+  width: 8px; height: 8px;
+  background: var(--green); border-radius: 50%;
+  position: absolute; left: 28px; top: 44px;
+}
+
+.step-content {
+  padding: 36px 0 48px 32px;
+  border-left: 1px solid var(--dark3);
+}
+
+.step-title {
+  font-size: 18px; font-weight: 700; color: var(--white);
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 14px; color: var(--gray-lt); line-height: 1.7;
+}
+
+/* ─── PORTFOLIO ─── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.portfolio-card {
+  background: var(--dark1);
+  border: 1px solid var(--dark3);
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.portfolio-card:hover { border-color: var(--green); }
+
+.portfolio-thumb {
+  aspect-ratio: 16/9;
+  background: var(--dark2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--dark3); letter-spacing: 2px;
+  position: relative; overflow: hidden;
+}
+
+/* Animated frame in portfolio thumbs */
+.portfolio-thumb::after {
+  content: '';
+  position: absolute; inset: 16px;
+  border: 1px solid var(--dark3);
+  transition: border-color 0.2s;
+}
+.portfolio-card:hover .portfolio-thumb::after { border-color: rgba(127,255,0,0.3); }
+
+.portfolio-thumb-inner {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+}
+
+.portfolio-tag-type {
+  background: var(--green); color: var(--black);
+  font-size: 9px; font-weight: 800; letter-spacing: 2px;
+  padding: 3px 8px; text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.portfolio-title-text { color: var(--gray); font-size: 10px; }
+
+.portfolio-info {
+  padding: 18px 20px;
+}
+.portfolio-type {
+  font-family: var(--font-mono);
+  font-size: 9px; color: var(--green); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+.portfolio-name {
+  font-size: 14px; font-weight: 600; color: var(--white);
+}
+
+.portfolio-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--green); text-decoration: none;
+  font-size: 13px; font-weight: 600; letter-spacing: 1px;
+  border: 1px solid var(--dark3); padding: 14px 24px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.portfolio-link:hover { border-color: var(--green); background: rgba(127,255,0,0.06); }
+
+/* ─── CONTACT ─── */
+/* ─── PERSONAL WORK ─── */
+.personal-work-section {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.personal-work-inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.pw-link {
+  border-color: var(--dark3);
+}
+.pw-link:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.pw-visual {
+  position: relative;
+  height: 220px;
+  border: 1px dashed var(--dark3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(127,255,0,0.025) 8px, rgba(127,255,0,0.025) 9px);
+}
+
+.pw-frame-deco {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.pw-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--dark3);
+  border: 1px solid var(--dark3);
+  padding: 6px 14px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .personal-work-inner { grid-template-columns: 1fr; }
+  .pw-visual { height: 160px; order: -1; }
+}
+
+.contact-section { background: var(--dark1); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-options {
+  display: flex; flex-direction: column; gap: 16px;
+  margin-top: 8px;
+}
+
+.contact-btn {
+  display: flex; align-items: center; gap: 20px;
+  padding: 24px 28px;
+  border: 1px solid var(--dark3);
+  text-decoration: none;
+  background: var(--black);
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.contact-btn:hover { border-color: var(--green); background: rgba(127,255,0,0.04); }
+
+.contact-btn-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(127,255,0,0.1);
+  font-size: 18px;
+}
+
+.contact-btn-text { flex: 1; }
+.contact-btn-label {
+  font-family: var(--font-mono);
+  font-size: 9px; color: var(--green); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 3px;
+}
+.contact-btn-value {
+  font-size: 15px; font-weight: 600; color: var(--white);
+}
+.contact-btn-arrow { color: var(--gray); font-size: 18px; }
+
+.contact-info h3 {
+  font-size: 22px; font-weight: 700; color: var(--white);
+  margin-bottom: 16px;
+}
+
+.contact-info p {
+  font-size: 14px; color: var(--gray-lt);
+  line-height: 1.7; margin-bottom: 24px;
+}
+
+.availability {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--gray-lt); letter-spacing: 1px;
+}
+.avail-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(127,255,0,0.15);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(127,255,0,0.15); }
+  50%       { box-shadow: 0 0 0 6px rgba(127,255,0,0.05); }
+}
+
+.timezone-note {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--gray);
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--dark3);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 40px var(--pad);
+  border-top: 1px solid var(--dark3);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-left {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--gray); letter-spacing: 1px;
+}
+
+.footer-links {
+  display: flex; gap: 24px; list-style: none;
+}
+.footer-links a {
+  font-size: 12px; color: var(--gray); text-decoration: none;
+  letter-spacing: 1px; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--green); }
+
+.footer-tagline {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--green); letter-spacing: 2px;
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero-stats { gap: 24px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid > *:first-child { order: 2; }
+  .contact-grid > *:last-child { order: 1; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+  .hero-stats { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  .avail-dot { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#top" class="nav-logo">
+    <div class="nav-frame">
+      <div class="tr"></div>
+      <div class="bl"></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-name">Pablo Terán</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="top">
+  <div class="hero-watermark">
+    <div class="wm-tr"></div>
+    <div class="wm-bl"></div>
+    <div class="wm-ch"></div>
+    <div class="wm-cv"></div>
+    <div class="wm-dot"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Audiovisual Producer &amp; Designer · Ecuador</div>
+
+    <h1 class="hero-headline">
+      I make brands<br>
+      <em>impossible<br>to ignore.</em>
+    </h1>
+
+    <p class="hero-sub">
+      Video production, motion graphics, and brand identity for businesses that want to look like they mean it. Remote-first, deadline-driven, English-speaking.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a Project</a>
+      <a href="#portfolio" class="btn-secondary">See My Work</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years producing</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Core services</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Remote friendly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">What I do</div>
+      <h2 class="section-title">Three things.<br>Done right.</h2>
+      <p class="section-sub">I don't do everything. I do video, motion, and identity — and I do them well. Each service is built around one goal: making your brand look like it belongs at the top.</p>
+    </div>
+
+    <div class="services-grid reveal">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <div class="icon-video-ring"></div>
+          <div class="icon-video" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:0;height:0;border-style:solid;border-width:8px 0 8px 14px;border-color:transparent transparent transparent var(--green);margin-left:2px;"></div>
+          </div>
+        </div>
+        <div class="service-name">Video Production</div>
+        <p class="service-desc">
+          Full-cycle video production — from concept and scripting to shooting, editing, and final delivery. Corporate videos, brand films, social content, event coverage. Shot on Sony ZV-E10, edited in Premiere Pro.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Brand Films</span>
+          <span class="tag">Social Content</span>
+          <span class="tag">Event Coverage</span>
+          <span class="tag">Color Grading</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-frame">
+          <div class="if-tr"></div>
+          <div class="if-bl"></div>
+          <div class="if-dot"></div>
+        </div>
+        <div class="service-name">Motion Graphics</div>
+        <p class="service-desc">
+          Animated visuals that move as well as your ideas. Logo animations, title sequences, explainer videos, social reels, lower thirds. Built in After Effects and Premiere Pro — delivered ready to publish.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Logo Animation</span>
+          <span class="tag">Explainer Video</span>
+          <span class="tag">Social Reels</span>
+          <span class="tag">After Effects</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-identity" style="width:48px;height:48px;">PT</div>
+        <div class="service-name">Brand Identity</div>
+        <p class="service-desc">
+          Visual identity systems that last. Logo design, color palettes, typography, brand guidelines, and all supporting assets. Delivered as a complete manual you can hand to anyone on your team.
+        </p>
+        <div class="service-tags">
+          <span class="tag">Logo Design</span>
+          <span class="tag">Brand Manual</span>
+          <span class="tag">Visual System</span>
+          <span class="tag">Illustrator</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PROCESS ─── -->
+<section id="process" style="background: var(--dark1);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">Simple.<br>No surprises.</h2>
+      <p class="section-sub">Working with international clients remotely means one thing: clear communication at every step. Here's exactly what happens when we work together.</p>
+    </div>
+
+    <div class="process-steps reveal">
+
+      <div class="process-step">
+        <div class="step-num">01<div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-title">Brief &amp; Scope</div>
+          <p class="step-desc">We talk — by email, WhatsApp, or video call. You tell me what you need, your timeline, and your budget. I tell you honestly if I'm the right fit and what I can deliver.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">02<div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-title">Proposal &amp; Quote</div>
+          <p class="step-desc">I send a detailed proposal within 24–48 hours: scope, deliverables, timeline, and a clear price. No hidden fees. 50% upfront to book the slot, 50% on final delivery.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">03<div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-title">Production</div>
+          <p class="step-desc">I work. You get progress updates at key milestones — not radio silence. First draft delivered on schedule, with a revision round included in every project.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">04<div class="step-dot"></div></div>
+        <div class="step-content">
+          <div class="step-title">Delivery</div>
+          <p class="step-desc">Final files delivered in the formats you need — broadcast-ready video, vector source files, brand assets in all sizes. Clean handoff, no confusion about what you're getting.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PORTFOLIO ─── -->
+<section id="portfolio">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Selected Work</div>
+      <h2 class="section-title">What I've built.</h2>
+      <p class="section-sub">A selection of projects across video, motion, and identity. Full portfolio on Behance.</p>
+    </div>
+
+    <div class="portfolio-grid reveal">
+
+      <a href="https://behance.net/pablotern159" target="_blank" class="portfolio-card">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);">
+          <div class="portfolio-thumb-inner">
+            <div class="portfolio-tag-type">Motion</div>
+            <div class="portfolio-title-text">HATARI · Brand Animation</div>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-type">Motion Graphics</div>
+          <div class="portfolio-name">Hatari Corp — Brand Animation</div>
+        </div>
+      </a>
+
+      <a href="https://behance.net/pablotern159" target="_blank" class="portfolio-card">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0D1A0D 0%, #1A2A1A 100%);">
+          <div class="portfolio-thumb-inner">
+            <div class="portfolio-tag-type">Identity</div>
+            <div class="portfolio-title-text">WIRAWAY · Visual System</div>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-type">Brand Identity</div>
+          <div class="portfolio-name">Wiraway Agency — Visual Identity</div>
+        </div>
+      </a>
+
+      <a href="https://behance.net/pablotern159" target="_blank" class="portfolio-card">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);">
+          <div class="portfolio-thumb-inner">
+            <div class="portfolio-tag-type">Video</div>
+            <div class="portfolio-title-text">Motion Graphics · Social</div>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-type">Video Production</div>
+          <div class="portfolio-name">Social Content — Motion Graphics</div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="reveal">
+      <a href="https://behance.net/pablotern159" target="_blank" class="portfolio-link">
+        View full portfolio on Behance →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PERSONAL WORK ─── -->
+<section id="personal-work" class="personal-work-section">
+  <div class="container">
+    <div class="personal-work-inner reveal">
+      <div class="pw-text">
+        <div class="section-eyebrow">Off the clock</div>
+        <h2 class="section-title" style="font-size: clamp(24px, 3.2vw, 36px);">Personal Work &amp; Illustration</h2>
+        <p class="section-sub" style="margin-bottom: 28px;">
+          Outside of client work, I draw. Character illustration, anatomy studies, raw and expressive linework — the stuff I make for myself, not for a brief. Still evolving, always posted.
+        </p>
+        <a href="#" class="btn-secondary pw-link" title="Adobe Portfolio coming soon">
+          View Personal Work →
+        </a>
+      </div>
+      <div class="pw-visual">
+        <div class="pw-frame-deco">
+          <span class="pw-tag">SKETCH</span>
+          <span class="pw-tag">ILLUSTRATION</span>
+          <span class="pw-tag">IN PROGRESS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── CONTACT ─── -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="reveal">
+        <div class="section-eyebrow">Get in touch</div>
+        <h2 class="section-title">Let's make something worth watching.</h2>
+
+        <div class="contact-options">
+          <a href="https://wa.me/593995693827?text=Hi%20Pablo%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" class="contact-btn">
+            <div class="contact-btn-icon">💬</div>
+            <div class="contact-btn-text">
+              <div class="contact-btn-label">WhatsApp · Fastest response</div>
+              <div class="contact-btn-value">+593 099 569 3827</div>
+            </div>
+            <div class="contact-btn-arrow">→</div>
+          </a>
+
+          <a href="mailto:teran.e.art@gmail.com?subject=Project%20Inquiry&body=Hi%20Pablo%2C%20I%27d%20like%20to%20discuss%20a%20project." class="contact-btn">
+            <div class="contact-btn-icon">✉️</div>
+            <div class="contact-btn-text">
+              <div class="contact-btn-label">Email · For detailed briefs</div>
+              <div class="contact-btn-value">teran.e.art@gmail.com</div>
+            </div>
+            <div class="contact-btn-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="availability">
+          <div class="avail-dot"></div>
+          Available for new projects
+        </div>
+
+        <h3 style="margin-top: 24px;">What to include<br>in your first message</h3>
+        <p>The more context you give me upfront, the faster I can send you a real quote:</p>
+
+        <ul style="list-style:none; margin-top: 8px;">
+          <li style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--dark3);font-size:14px;color:var(--gray-lt);">
+            <span style="color:var(--green);flex-shrink:0;">→</span> What type of project (video, motion, identity)
+          </li>
+          <li style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--dark3);font-size:14px;color:var(--gray-lt);">
+            <span style="color:var(--green);flex-shrink:0;">→</span> Your deadline or target launch date
+          </li>
+          <li style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--dark3);font-size:14px;color:var(--gray-lt);">
+            <span style="color:var(--green);flex-shrink:0;">→</span> A rough idea of your budget range
+          </li>
+          <li style="display:flex;gap:10px;padding:8px 0;font-size:14px;color:var(--gray-lt);">
+            <span style="color:var(--green);flex-shrink:0;">→</span> Any reference links or examples you like
+          </li>
+        </ul>
+
+        <div class="timezone-note">
+          🕐 Based in Ambato, Ecuador (UTC-5). I typically respond within 4–8 hours on business days.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-left">
+    © 2025 Pablo Terán · Ambato, Ecuador
+  </div>
+
+  <ul class="footer-links">
+    <li><a href="https://behance.net/pablotern159" target="_blank">Behance</a></li>
+    <li><a href="https://instagram.com/pablot.19" target="_blank">Instagram</a></li>
+    <li><a href="https://linkedin.com/in/pablo-terán-5077bb256" target="_blank">LinkedIn</a></li>
+    <li><a href="https://www.workana.com/freelancer/31a6f3b680de42d06fa0ecff25416040" target="_blank">Workana</a></li>
+  </ul>
+
+  <div class="footer-tagline">CREATE. PRODUCE. TEACH.</div>
+</footer>
+
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger service cards
+document.querySelectorAll('.service-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.1}s`;
+});
+</script>
+
+</body>
+</html>
